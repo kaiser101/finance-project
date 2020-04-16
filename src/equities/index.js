@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import connect from "react-redux";
+import equities from "./reducers/index";
+import { updateFormElement, submitForm } from "./actions/index";
 
 import "react-datepicker/dist/react-datepicker.css";
 
 const Equities = ({ onClick }) => {
-    const [form, setForm] = useState({});
+    const [state, dispatch] = useReducer(equities, {});
+
+    // const [form, setForm] = useState({});
 
     const updateEquitiesForm = (e) => {
         const { id, value } = e.target;
-        setForm({ ...form, [id]: value });
+        // setForm({ ...form, [id]: value });
+        dispatch(updateFormElement(id, value));
     };
 
     return (
@@ -26,7 +31,7 @@ const Equities = ({ onClick }) => {
                         id="name"
                         className="input"
                         onChange={updateEquitiesForm}
-                        value={form.name}
+                        value={state.name}
                     />
                 </div>
             </div>
@@ -40,7 +45,7 @@ const Equities = ({ onClick }) => {
                         id="sharename"
                         className="input"
                         onChange={updateEquitiesForm}
-                        value={form.sharename}
+                        value={state.sharename}
                     />
                 </div>
             </div>
@@ -54,7 +59,7 @@ const Equities = ({ onClick }) => {
                         id="isin"
                         className="input"
                         onChange={updateEquitiesForm}
-                        value={form.isin}
+                        value={state.isin}
                     />
                 </div>
             </div>
@@ -68,7 +73,7 @@ const Equities = ({ onClick }) => {
                         id="quantity"
                         className="input"
                         onChange={updateEquitiesForm}
-                        value={form.quantity}
+                        value={state.quantity}
                     />
                 </div>
             </div>
@@ -82,7 +87,7 @@ const Equities = ({ onClick }) => {
                         id="netRatePerShare"
                         className="input"
                         onChange={updateEquitiesForm}
-                        value={form.netRatePerShare}
+                        value={state.netRatePerShare}
                     />
                 </div>
             </div>
@@ -96,7 +101,7 @@ const Equities = ({ onClick }) => {
                         id="rateBeforeBrokerage"
                         className="input"
                         onChange={updateEquitiesForm}
-                        value={form.rateBeforeBrokerage}
+                        value={state.rateBeforeBrokerage}
                     />
                 </div>
             </div>
@@ -110,7 +115,7 @@ const Equities = ({ onClick }) => {
                         id="purchaseDate"
                         className="input"
                         onChange={updateEquitiesForm}
-                        value={form.purchaseDate}
+                        value={state.purchaseDate}
                     />
                 </div>
             </div>
@@ -124,7 +129,7 @@ const Equities = ({ onClick }) => {
                         id="sellDate"
                         className="input"
                         onChange={updateEquitiesForm}
-                        value={form.sellDate}
+                        value={state.sellDate}
                     />
                 </div>
             </div>
@@ -138,7 +143,7 @@ const Equities = ({ onClick }) => {
                         id="reference"
                         className="input"
                         onChange={updateEquitiesForm}
-                        value={form.reference}
+                        value={state.reference}
                     />
                 </div>
             </div>
@@ -152,7 +157,7 @@ const Equities = ({ onClick }) => {
                         id="applicationNumber"
                         className="input"
                         onChange={updateEquitiesForm}
-                        value={form.applicationNumber}
+                        value={state.applicationNumber}
                     />
                 </div>
             </div>
@@ -166,7 +171,7 @@ const Equities = ({ onClick }) => {
                         id="bonusShareQty"
                         className="input"
                         onChange={updateEquitiesForm}
-                        value={form.bonusShareQty}
+                        value={state.bonusShareQty}
                     />
                 </div>
             </div>
@@ -180,7 +185,7 @@ const Equities = ({ onClick }) => {
                         id="bonusShareDate"
                         className="input"
                         onChange={updateEquitiesForm}
-                        value={form.bonusShareDate}
+                        value={state.bonusShareDate}
                     />
                 </div>
             </div>
@@ -194,7 +199,7 @@ const Equities = ({ onClick }) => {
                         id="dividend"
                         className="input"
                         onChange={updateEquitiesForm}
-                        value={form.dividend}
+                        value={state.dividend}
                     />
                 </div>
             </div>
@@ -208,7 +213,7 @@ const Equities = ({ onClick }) => {
                         id="dividendDate"
                         className="input"
                         onChange={updateEquitiesForm}
-                        value={form.dividendDate}
+                        value={state.dividendDate}
                     />
                 </div>
             </div>
