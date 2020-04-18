@@ -7,15 +7,16 @@ import { updateFormElement, submitForm } from "./actions/index";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const Equities = ({ onClick }) => {
+const Equities = () => {
     const [state, dispatch] = useReducer(equities, {});
-
-    // const [form, setForm] = useState({});
 
     const updateEquitiesForm = (e) => {
         const { id, value } = e.target;
-        // setForm({ ...form, [id]: value });
         dispatch(updateFormElement(id, value));
+    };
+
+    const onClick = () => {
+        dispatch(submitForm());
     };
 
     return (
