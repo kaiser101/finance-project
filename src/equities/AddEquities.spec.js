@@ -1,13 +1,13 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Equities from "./index";
+import AddEquities from "./index";
 import _ from "lodash";
 
 describe("It renders the Equities component", () => {
     let component;
 
     beforeEach(() => {
-        component = shallow(<Equities />);
+        component = shallow(<AddEquities />);
         return component;
     });
 
@@ -32,7 +32,7 @@ describe("Test form input elements", () => {
     let component;
 
     beforeEach(() => {
-        component = shallow(<Equities />);
+        component = shallow(<AddEquities />);
         return component;
     });
 

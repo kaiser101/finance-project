@@ -7,7 +7,7 @@ import { updateFormElement, submitForm } from "./actions/index";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const Equities = () => {
+const AddEquities = () => {
     const [state, dispatch] = useReducer(equities, {});
 
     const updateEquitiesForm = (e) => {
@@ -235,6 +235,6 @@ const mapDispatchToProps = (dispatch) => ({
     updateForm: (id, value) => dispatch(updateFormElement({ id, value })),
 });
 
-export default Equities;
+export default AddEquities;
 
 // quantity    net rate per share ( after brokerage)   rate before brokerage   date of purchase    date of sell    Tracation Id/ref.no Application No. bonus share quantity    bonus share date    Divident    divident date
