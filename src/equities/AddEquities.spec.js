@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import AddEquities from "./index";
+import AddEquities from "./AddEquities";
 import _ from "lodash";
 
 describe("It renders the Equities component", () => {
