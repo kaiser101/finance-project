@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 // import './App.css';
 import "bulma/css/bulma.min.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import AddEquities from "./equities/AddEquities";
+import Equities from "./equities/";
 import MutualFunds from "./mutualfunds/";
 import FixedDeposits from "./fixeddeposits/";
 
@@ -54,7 +54,7 @@ const App = () => {
                 <div className="container">
                     <Switch>
                         <Route path="/equities/add">
-                            <AddEquities></AddEquities>
+                            <Equities></Equities>
                         </Route>
                         <Route path="/mutualfunds">
                             <MutualFunds></MutualFunds>
