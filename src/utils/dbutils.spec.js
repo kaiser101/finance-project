@@ -56,4 +56,8 @@ describe("This file contains all db utility methods", () => {
         let fetched = await getById(id);
         expect(fetched.quantity).toBe(2000);
     });
+
+    test("Check promises", () => {
+        return save({ isin: "SBI" }).then((resp) => console.log(resp));
+    });
 });
