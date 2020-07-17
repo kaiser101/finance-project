@@ -57,7 +57,14 @@ describe("This file contains all db utility methods", () => {
         expect(fetched.quantity).toBe(2000);
     });
 
-    test("Check promises", () => {
-        return save({ isin: "SBI" }).then((resp) => console.log(resp));
+    test("Check promises, dont forget the return", () => {
+        return save({ isin: "SBI" }).then((resp) => {
+            console.debug(resp);
+            let id = resp._id;
+            return getById(id).then((resp) => {
+                console.debug(resp);
+                expect(resp.isin).toMatch("SBI");
+            });
+        });
     });
 });
