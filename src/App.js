@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 // import './App.css';
 import "bulma/css/bulma.min.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -20,7 +19,7 @@ const App = () => {
                         <Link to="/mutualfunds" className="navbar-item">
                             Mutual Funds
                         </Link>
-                        <Link to="/equities/add" className="navbar-item">
+                        <Link to="/equities" className="navbar-item">
                             Equities
                         </Link>
                         <Link to="/fixeddeposits" className="navbar-item">
@@ -53,7 +52,7 @@ const App = () => {
             <section className="section">
                 <div className="container">
                     <Switch>
-                        <Route path="/equities/add">
+                        <Route path="/equities">
                             <Equities></Equities>
                         </Route>
                         <Route path="/mutualfunds">

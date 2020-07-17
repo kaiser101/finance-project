@@ -2,39 +2,28 @@ import { getConnection, getEquities, save, update, getById } from "./dbutils";
 // configure("./filename");
 
 describe("This file contains all db utility methods", () => {
-    beforeEach(() => {
-        let equity = {
-            isin: "BSE",
-            quantity: 2000,
-            unitPrice: 250.25,
-        };
-
-        getEquities().save(equity);
-    });
-
-    it("Returns a database connection", () => {
-        let connection = getConnection();
+    test("Returns a database connection", async () => {
+        let connection = await getConnection();
         expect(connection).toBeTruthy();
     });
 
-    it("Returns the equities collection", () => {
-        let equities = getEquities();
+    test("Returns the equities collection", async () => {
+        let equities = await getEquities();
         expect(equities).toBeTruthy();
     });
 
-    it("Saves the equities object", () => {
+    test("Saves the equities object", async () => {
         let equity = {
             isin: "BSE",
             quantity: 2000,
             unitPrice: 250.25,
         };
 
-        save(equity).then((response) =>
-            expect(response._id).toBeGreaterThan(0)
-        );
+        let saved = await save(equity);
+        expect(saved._key).toBeTruthy();
     });
 
-    it("Updates the equities object", () => {
+    test("Updates the equities object", async () => {
         let equity = {
             isin: "BSE",
             quantity: 2000,
@@ -45,20 +34,26 @@ describe("This file contains all db utility methods", () => {
             quantity: 2500,
         };
 
-        save(equity).then((response) => {
-            expect(response._id).toBeGreaterThan(0);
-            update(equity, delta).then((response) =>
-                expect(response.quantity).toEqual(2500)
-            );
-        });
+        let saved = await save(equity);
+        // console.debug(saved);
+
+        let updated = await update(saved, delta);
+        console.debug(updated);
+
+        let doc1 = await getById(updated._id);
+        expect(doc1.quantity).toEqual(2500);
     });
 
-    it("Gets the equities object by id", () => {
-        getById(60063)
-            .then((resp) => {
-                console.log(resp);
-                // expect(resp.quantity).toEqual(2500);
-            })
-            .catch((ex) => expect(ex).toMatch("error"));
+    test("Gets the equities object by id", async () => {
+        let equity = {
+            isin: "BSE",
+            quantity: 2000,
+            unitPrice: 250.25,
+        };
+
+        let saved = await save(equity);
+        let id = saved._id;
+        let fetched = await getById(id);
+        expect(fetched.quantity).toBe(2000);
     });
 });
