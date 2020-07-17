@@ -11,17 +11,17 @@ describe("It renders the Equities component", () => {
         return component;
     });
 
-    it("Renders the top level component with an h1 tag", () => {
+    test("Renders the top level component with an h1 tag", () => {
         const h1tag = component.find("h1");
         expect(h1tag.text()).toBe("Equities");
     });
 
-    it("Renders a button", () => {
+    test("Renders a button", () => {
         const clickMeButton = component.find("button");
         expect(clickMeButton.text()).toEqual("Click Me");
     });
 
-    // it("Invokes method when button is clicked", () => {
+    // test("Invokes method when button is clicked", () => {
     //     const clickMeButton = component.find("button");
     //     clickMeButton.simulate("click");
     //     expect(mockFunction).toBeCalled();
@@ -36,7 +36,7 @@ describe("Test form input elements", () => {
         return component;
     });
 
-    it.each`
+    test.each`
         id
         ${"name"}
         ${"sharename"}
