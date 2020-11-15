@@ -1,4 +1,11 @@
-import { getConnection, getEquities, save, update, getById } from "./dbutils";
+import {
+    getConnection,
+    getEquities,
+    save,
+    update,
+    getById,
+    removeDcoument,
+} from "./dbutils";
 // configure("./filename");
 
 describe("This file contains all db utility methods", () => {
@@ -55,6 +62,28 @@ describe("This file contains all db utility methods", () => {
         let id = saved._id;
         let fetched = await getById(id);
         expect(fetched.quantity).toBe(2000);
+    });
+
+    test("Deletes document specified by id", async () => {
+        let equity = {
+            isin: "BSE",
+            quantity: 2000,
+            unitPrice: 250.25,
+        };
+
+        let fetched;
+        let saved = await save(equity);
+        let id = saved._id;
+
+        await removeDcoument(id);
+
+        try {
+            fetched = await getById(id);
+        } catch (error) {
+            console.warn(error);
+            expect(fetched).toBeFalsy();
+            expect(error.response.body.errorMessage).toBe("document not found");
+        }
     });
 
     test("Check promises, dont forget the return", () => {

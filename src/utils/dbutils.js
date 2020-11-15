@@ -25,4 +25,8 @@ const getById = async (id) => {
     return document;
 };
 
-export { getConnection, getEquities, save, update, getById };
+const removeDcoument = async (id) => {
+    await getEquities().remove(id);
+};
+
+export { getConnection, getEquities, save, update, getById, removeDcoument };
